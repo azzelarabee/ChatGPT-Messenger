@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { PlusIcon } from "@heroicons/react/24/solid";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useSession } from "next-auth/react";
@@ -13,9 +13,8 @@ function NewChat() {
             const doc = await addDoc(
                 collection(db,"users" , session?.user?.email!,"chats"), 
                 {
-                    messages: [],
                     userId: session?.user?.email!,
-                    createdAt: serverTimestamp()
+                    createdAt: serverTimestamp(),
                 }
             );
 
@@ -23,7 +22,8 @@ function NewChat() {
         
     };
     return (
-        <div onClick={createNewChat} className="border-gray-700 boreder chatRow">
+        <div onClick={createNewChat} className="border-gray-700 boreder 
+        chatRow">
             <PlusIcon className="h-4 w-4" />
             <p>New Chat</p>
         </div>

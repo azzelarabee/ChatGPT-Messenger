@@ -1,11 +1,11 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import query from '../../lib/queryAPI';
+import query from '../../../lib/queryAPI';
 import admin from "firebase-admin";
-import { adminDb } from '../../firebaseAdmin';
+import { adminDb } from '../../../firebaseAdmin';
 
 type Data = {
-  answer: string
+  answer: string;
 }
 
 export default async function handler(
