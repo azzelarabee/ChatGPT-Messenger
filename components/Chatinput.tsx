@@ -37,21 +37,21 @@ function ChatInput({chatId}:Props) {
             user:{
                 _id: session?.user?.email!,
                 name: session?.user?.email!,
-                avatar: session?.user?.image! || `https//ui-avatars.com/api/?name=${session?.user?.name}`,
+                avatar: session?.user?.image! || `https://ui-avatars.com/api/?name=${session?.user?.name}`,
             }
         }
 
-        await addDoc(collection(db,'users',session?.user?.email!,'messages'),
+        await addDoc(collection(db,"users",session?.user?.email!,"messages"),
         message
         )
 
         //Toast notification to say loading
         const notification = toast.loading('ChaGPT is thinking...');
 
-        await fetch('/api/askQuesion',{
-            method: 'POST',
+        await fetch("/api/askQuesion",{
+            method: "POST",
             headers: {
-                'Content-Type': 'application/json'
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({
                 prompt: input,

@@ -5,6 +5,7 @@ import {getFirestore} from "firebase/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyC9XW6Fhv9DbH-VJOoCpsb77AfpykWniBs",
   authDomain: "chatgpt-messenger-yt-378812.firebaseapp.com",
+  databaseURL: "https://chatgpt-messenger-yt-378812-default-rtdb.firebaseio.com",
   projectId: "chatgpt-messenger-yt-378812",
   storageBucket: "chatgpt-messenger-yt-378812.appspot.com",
   messagingSenderId: "689374930683",
