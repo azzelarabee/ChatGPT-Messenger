@@ -17,7 +17,7 @@ function ChatInput({chatId}:Props) {
     const [prompt,setPrompt] = useState("");
     const {data:session} = useSession();
 
-
+    
     const {data: model} = useSWR("model",{
         fallbackData: 'text-davinci-003',
     });
@@ -41,29 +41,29 @@ function ChatInput({chatId}:Props) {
             }
         }
 
-        await addDoc(collection(db,"users",session?.user?.email!,"messages"),
+        await addDoc(collection(db,"users",session?.user?.email!,"chats",chatId,"messages"),
         message
-        )
+        );
 
         //Toast notification to say loading
-        const notification = toast.loading('ChaGPT is thinking...');
+        const notification = toast.loading("ChatGPT is thinking...");
 
-        await fetch("/api/askQuesion",{
+        await fetch("/api/askQuestion",{
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
             },
             body: JSON.stringify({
                 prompt: input,
                 chatId,
                 model,
-                session
+                session,
             }),
         }).then(()=> {
                 //toast notification to say successful!
-                toast.success('ChaGPT has responded!',{
+                toast.success("ChatGPT has responded!",{
                     id: notification,
-                })
+                });
         });
         
     };
